@@ -1,0 +1,14 @@
+{application, jsondiff,
+ [
+  {description, "An Erlang jsondiff library"},
+  {vsn, "1"},
+  {modules, [
+             jsondiff
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
