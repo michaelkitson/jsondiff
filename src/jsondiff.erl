@@ -12,7 +12,7 @@ diff(From, To) ->
     diff(From, To, jsxn:is_json(From), jsxn:is_json(To)).
 
 diff(From, To, true, true) ->
-    lists:flatten(get_changes(jsxn:decode(From), jsxn:decode(To), [])).
+    lists:sort(fun sort_changes/2, lists:flatten(get_changes(jsxn:decode(From), jsxn:decode(To), []))).
 
 %% Internals
 
@@ -80,5 +80,21 @@ as_map({removed, Path, OldValue}) ->
         path => Path,
         newValue => OldValue
     }.
+
+%% Result Sorting
+sort_changes({added, LeftPath, _LeftNewValue}, {added, RightPath, _RightNewValue}) ->
+    LeftPath < RightPath;
+sort_changes({added, _LeftPath, _LeftNewValue}, _Right) ->
+    true;
+sort_changes(_Left, {added, _RightPath, _RightNewValue}) ->
+    false;
+sort_changes({modified, LeftPath, _LeftOldValue, _LeftNewValue}, {modified, RightPath, _RightOldValue, _RightNewValue}) ->
+    LeftPath < RightPath;
+sort_changes({modified, _LeftPath, _LeftOldValue, _LeftNewValue}, _Right) ->
+    true;
+sort_changes(_Left, {modified, _RightPath, _RightOldValue, _RightNewValue}) ->
+    false;
+sort_changes({removed, LeftPath, _LeftOldValue}, {removed, RightPath, _RightOldValue}) ->
+    LeftPath < RightPath.
 
 %% End of Module.
