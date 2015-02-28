@@ -50,7 +50,7 @@ get_changes(From, To, Path) when is_list(From) andalso is_list(To) ->
         Removed = [{removed, Path ++ [Index - 1], lists:nth(Index, From)} || Index <- RemovedIndexes]
     end,
     ConstantIndexes = lists:seq(1, min(FromLength, ToLength)),
-    Modifications = [get_changes(lists:nth(Index, From), lists:nth(Index, To), Path ++ [Index]) || Index <- ConstantIndexes],
+    Modifications = [get_changes(lists:nth(Index, From), lists:nth(Index, To), Path ++ [Index - 1]) || Index <- ConstantIndexes],
 
     Added ++ Modifications ++ Removed;
 
