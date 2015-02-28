@@ -2,11 +2,11 @@
 
 %% jsondiff: Detect changes between json documents.
 
--export([diff/2, asJSON/2]).
+-export([diff/2, as_json/2]).
 
 %% API
-asJSON(From, To) ->
-    jsxn:encode([asMap(Change) || Change <- diff(From, To)]).
+as_json(From, To) ->
+    jsxn:encode([as_map(Change) || Change <- diff(From, To)]).
 
 diff(From, To) ->
     diff(From, To, jsxn:is_json(From), jsxn:is_json(To)).
@@ -59,14 +59,14 @@ get_changes(From, To, Path) ->
     [{modified, Path, From, To}].
 
 %% Result conversions
-asMap({added, Path, NewValue}) ->
+as_map({added, Path, NewValue}) ->
     #{
         type => added,
         path => Path,
         newValue => NewValue
     };
 
-asMap({modified, Path, OldValue, NewValue}) ->
+as_map({modified, Path, OldValue, NewValue}) ->
     #{
         type => modified,
         path => Path,
@@ -74,7 +74,7 @@ asMap({modified, Path, OldValue, NewValue}) ->
         oldValue => OldValue
     };
 
-asMap({removed, Path, OldValue}) ->
+as_map({removed, Path, OldValue}) ->
     #{
         type => removed,
         path => Path,

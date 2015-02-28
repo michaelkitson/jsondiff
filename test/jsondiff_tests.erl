@@ -73,5 +73,5 @@ subobject_json_test() ->
         #{ type => modified, path => [<<"d">>],          oldValue => 4, newValue => 5},
         #{ type => removed,  path => [<<"b">>],          newValue => 2}
     ]),
-    Actual = jsondiff:asJSON(One, Two),
+    Actual = jsondiff:as_json(One, Two),
     ?assertEqual(Expected, Actual).
