@@ -1,13 +1,4 @@
-%%%-------------------------------------------------------------------
-%%% @author mike
-%%% @copyright (C) 2015, <COMPANY>
-%%% @doc
-%%%
-%%% @end
-%%% Created : 24. Feb 2015 00:27
-%%%-------------------------------------------------------------------
 -module(jsondiff_tests).
--author("mike").
 
 -include_lib("eunit/include/eunit.hrl").
 
