@@ -1,7 +1,7 @@
 # jsondiff
 An erlang JSON diffing library.
 
-[![Build Status](https://magnum.travis-ci.com/michaelkitson/jsondiff.svg?token=9U3SvxR2itsJbCVgWNgz&branch=master)](https://magnum.travis-ci.com/michaelkitson/jsondiff)
+[![Build Status](https://travis-ci.org/michaelkitson/jsondiff.svg)](https://travis-ci.org/michaelkitson/jsondiff)
 
 ## Examples
 
